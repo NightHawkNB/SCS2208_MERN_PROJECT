@@ -1,0 +1,12 @@
+{
+    "email":"chathura@gmail.com",
+    "password":"Chathura@1234",
+    "userType":"normal"
+}
+
+{
+    "email":"chathura123@gmail.com",
+    "password":"Chathura@1234",
+    "userType":"normal"
+}
+
