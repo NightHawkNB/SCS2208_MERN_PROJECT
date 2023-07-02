@@ -9,4 +9,14 @@
     "password":"Chathura@1234",
     "userType":"normal"
 }
+{
+    "email":"chathura@chathura.com",
+    "password":"Chathura@1234",
+    "userType":"normal"
+}
 
+{
+    "email":"chathuralakshan@chathuralakshan.com",
+    "password":"Chathura@1234",
+    "userType":"normal"
+}
