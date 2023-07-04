@@ -4,6 +4,14 @@ const bcrypt=require('bcrypt')//for hashing passwords
 const validator=require('validator')//to validate mails and passwords
 
 const userSchema=new schema({
+    fName:{
+        type:String,
+        required:true,
+    },
+    lName:{
+        type:String,
+        required:true,
+    },
     email:{
         type:String,
         required:true,
@@ -19,18 +27,27 @@ const userSchema=new schema({
     }
 })
 
+
+const formatNames=(name)=>{//to make first letter capital
+    name=name.toLowerCase()
+    return name.replace(name[0],name[0].toUpperCase())
+}
+
+
+
 //signup static method
-userSchema.statics.signup=async function (email,password,userType){
+userSchema.statics.signup=async function (fName,lName,email,password,userType,isGoogleAuth=0){
     
-    if(!email||!password||!userType){
+    if(!fName || !lName || !email || !password || !userType){
         throw Error("All Fields must be filled!")
     }
     if(!validator.isEmail(email)){
         throw Error("Enter a valid email")
     }
-    if(!validator.isStrongPassword(password)){
-        throw Error("Plase enter a strong password")
-    }
+    if(!isGoogleAuth){//if not google oauth , check for strength of password
+        if(!validator.isStrongPassword(password)){
+            throw Error("Plase enter a strong password")
+    }}
     
     const exists=await this.findOne({email})
     
@@ -41,8 +58,9 @@ userSchema.statics.signup=async function (email,password,userType){
     //hashing
     const salt=await bcrypt.genSalt(10)
     const hash=await bcrypt.hash(password,salt)
-    
-    const user=await this.create({email:email,password:hash,userType:userType})
+    fName=formatNames(fName)
+    lName=formatNames(lName)
+    const user=await this.create({fName:fName,lName:lName,email:email,password:hash,userType:userType})
    
     return user
 }

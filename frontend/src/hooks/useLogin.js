@@ -30,5 +30,35 @@ export const useLogin=()=>{
             setIsLoading(false)
         }
     }
-    return {login,isLoading,error}
+
+    const googleLogin=async (obj)=>{
+        setIsLoading(true)
+        setError(null)
+        const {credential}=obj //taking credential token from the google response to the signin
+
+       
+        const response=await fetch('/api/user/login',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${credential}`
+            }
+        })
+
+        const json=await response.json()
+        if(!response.ok){
+            setIsLoading(false)
+            setError(json.error)
+            // console.log(error)
+        }
+        if(response.ok){
+             //saving the user to local storage
+             localStorage.setItem('user',JSON.stringify(json))
+
+             //updating the auth context
+             dispatch({type:'LOGIN',payload:json})
+             setIsLoading(false)
+        }
+    }
+    return {googleLogin,login,isLoading,error}
 }

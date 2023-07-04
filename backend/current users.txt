@@ -1,4 +1,13 @@
 {
+    "fName":"Sajith",
+    "lName":"Bandara",
+    "email":"sajith@gmail.com",
+    "password":"Chathura@1234",
+    "userType":"normal"
+}
+
+
+{
     "email":"chathura@gmail.com",
     "password":"Chathura@1234",
     "userType":"normal"
@@ -17,6 +26,11 @@
 
 {
     "email":"chathuralakshan@chathuralakshan.com",
+    "password":"Chathura@1234",
+    "userType":"normal"
+}
+{
+    "email":"chathura@yahoo.com",
     "password":"Chathura@1234",
     "userType":"normal"
 }

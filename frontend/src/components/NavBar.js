@@ -13,7 +13,7 @@ const NavBar=()=>{
             <nav>
                 {user ? (
                     <div className='userDetials'>
-                        <span>{user.email}</span>
+                        <span>Hi {user.fName+" "+user.lName}</span>
                         <button onClick={handleClick}>Log out</button>
                     </div>
                 ):(

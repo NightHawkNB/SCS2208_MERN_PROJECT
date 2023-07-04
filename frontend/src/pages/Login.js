@@ -1,16 +1,20 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin";
-
+import {GoogleLogin} from '@react-oauth/google'
 const Login=()=>{
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('');
-    const {isLoading,error,login}=useLogin()
+    const {isLoading,error,login,googleLogin}=useLogin()
 
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
         await login(email,password)
         
+    }
+
+    const googleLoginSuccess=async (e)=>{
+        await googleLogin(e)
     }
     return (
         <form className="login" onSubmit={handleSubmit}>
@@ -20,7 +24,11 @@ const Login=()=>{
             <label>Password:</label>
             <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
             <button disabled={isLoading}>Log In</button>
-            {error && <div className="error">{error}</div>}
+            {error && <div className="error">{error}</div>} 
+            <GoogleLogin
+            onSuccess={googleLoginSuccess}
+            onError={(error)=>console.log(error)}
+            />
         </form>
     )
 }
