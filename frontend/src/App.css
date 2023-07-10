@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +35,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+:root{
+  --primary:#1aac83;
+  --error:#e7195a;
+}
+
+div.error{
+  padding: 10px;
+  background:#ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+
+}
+
+input.error{
+  border: 1px solid var(--error);
+}
+
+
+.login {
+  padding: 1em;
+  background: hsl(233deg 36% 38%);
+  color: hsl(0 0 100);
+
+  border-radius: 30px;
+  font-weight: 600;
 }

@@ -3,7 +3,7 @@ const express=require('express')
 const mongoose=require('mongoose')//using mongoose 
 //importing routers
 const userRoutes=require('./routes/user')
-
+const bookRoutes=require('./routes/books')
 
 //express app
 const app=express()
@@ -25,7 +25,11 @@ app.get('/',(req,res)=>{
 })
 */
 //routes by imported route files
+//for user login and signups
 app.use('/api/user',userRoutes)
+
+//for BOOK CRUDS 
+app.use('/api/books',bookRoutes)
 
 //connect to database
 mongoose.connect(process.env.MONGO_URI)//Async in nature, so this will return a promise

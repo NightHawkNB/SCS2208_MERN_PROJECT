@@ -28,7 +28,7 @@ const userSchema=new schema({
 })
 
 
-const formatNames=(name)=>{//to make first letter capital
+const formatNames=(name)=>{//to make first letter capital and rest simple
     name=name.toLowerCase()
     return name.replace(name[0],name[0].toUpperCase())
 }
