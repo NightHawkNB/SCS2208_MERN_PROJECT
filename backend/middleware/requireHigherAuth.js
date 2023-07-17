@@ -6,7 +6,7 @@ const User=require('../models/userModel')
 const requireHigherAuth= async (req,res,next)=>{
     const {authorization}=req.headers
     if(!authorization){
-        res.status(401).json({error:'Authorization token required'})
+        return res.status(401).json({error:'Authorization token required'})
     }
 
     const token = authorization.split(' ')[1]

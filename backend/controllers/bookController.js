@@ -38,6 +38,17 @@ const getBooks=async (req,res)=>{
     res.status(200).json(books)
 }
 
+
+//getAvailabaleBooks
+const getAvailableBooks=async (req,res)=>{
+    
+    const books=await Books.find({nAvailable:{$gt:0}})//returns all available books
+    
+    res.status(200).json(books)
+}
+
+
+
 //READ a book
 const getABook=async (req,res)=>{
     const {id}=req.params
@@ -76,6 +87,10 @@ const deleteBook=async (req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such book is listed'})
     }
+    const {nAvailable,totalCopies}=await Books.findById(id)
+    if(nAvailable!=totalCopies){
+        return res.status(404).json({error:'Cannot delete book since there are borrowed or reserved copies of the book!'})
+    }
     const book=await Books.findByIdAndDelete({_id:id})
     if(!book){
         return res.status(404).json({error:'No such book is listed'})
@@ -83,9 +98,12 @@ const deleteBook=async (req,res)=>{
     res.status(200).json(book)
 }
 
+
+
 module.exports={
     createBook,
     getBooks,
+    getAvailableBooks,
     getABook,
     deleteBook,
     updateBook

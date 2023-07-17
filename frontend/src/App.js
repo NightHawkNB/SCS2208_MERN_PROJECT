@@ -6,6 +6,8 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import NavBar from './components/NavBar';
+import AllBooks from './pages/AllBooks';
+import AvailableBooks from './pages/AvailableBooks';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path='/' element={<Home />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/allbooks' element={<AllBooks />} />
+            <Route path='/available' element={<AvailableBooks />} />
           </Routes>
         </div>
       </BrowserRouter>

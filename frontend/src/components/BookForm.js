@@ -19,7 +19,7 @@ const BookForm=()=>{
         }
         
         const book={title,author,totalCopies}
-        const response=await fetch('/api/books',{
+        const response=await fetch('/api/bookcrud',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

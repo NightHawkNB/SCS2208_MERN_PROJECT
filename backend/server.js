@@ -3,6 +3,7 @@ const express=require('express')
 const mongoose=require('mongoose')//using mongoose 
 //importing routers
 const userRoutes=require('./routes/user')
+const bookCrudRoutes=require('./routes/bookcrud')
 const bookRoutes=require('./routes/books')
 
 //express app
@@ -28,7 +29,10 @@ app.get('/',(req,res)=>{
 //for user login and signups
 app.use('/api/user',userRoutes)
 
-//for BOOK CRUDS 
+//for BOOK CRUDS for Higher Admins
+app.use('/api/bookcrud',bookCrudRoutes)
+
+//for Book for normal users
 app.use('/api/books',bookRoutes)
 
 //connect to database
