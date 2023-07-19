@@ -35,10 +35,11 @@ const BookDetails=({book})=>{
             <p><strong>Author: </strong>{book.author}</p>
             <p><strong>Total number of copies: </strong>{book.totalCopies}</p>
             <p><strong>Number of available Copies: </strong>{book.nAvailable}</p>
-            {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
-            {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleUpdate}>change_circle</span>}
             {isFormOpen && <PopupForm book={book}/>}
             {error && <div className="error">{error}</div>} 
+        
+            {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
+            {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleUpdate}>change_circle</span>}
         </div>
     )
 }

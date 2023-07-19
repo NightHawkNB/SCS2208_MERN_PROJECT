@@ -101,3 +101,32 @@ form button{
   font-weight: 600;
 }
 
+.book-details{
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px ;
+  padding: 20px; 
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.book-details span{
+  top:20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  margin:5px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.book-details h4{
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color:var(--primary)
+}
+.book-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color:#555;
+}
