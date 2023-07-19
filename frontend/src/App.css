@@ -56,6 +56,41 @@ input.error{
   border: 1px solid var(--error);
 }
 
+.popup{
+  position:absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+
+.popup label, input{
+  display: block;
+}
+.popup input{
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button{
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding:10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 .login {
   padding: 1em;

@@ -5,7 +5,17 @@ import { useEffect } from "react";
 const AllBooks = () => {
     const {user}=useAuthContext()
     const [books,setBooks]=useState([])
+    var booksArr=[]
     const [error,setError]=useState(null)
+    const [keyWord,setKeyWord]=useState('')//for search
+
+    const handleSearch=(e)=>{
+        setKeyWord(e.target.value)
+        // console.log(booksArr.filter(obj=>obj.title.includes(keyWord)))
+        
+        // if(keyWord=='')setBooks(booksArr)
+        // else setBooks(booksArr.filter(obj=>obj.title.includes(keyWord)))
+    }
         useEffect(()=>{
             setError(null)
             setBooks([])
@@ -21,6 +31,7 @@ const AllBooks = () => {
                 if(response.ok){
                     console.log(json)
                     setBooks(json)
+                    booksArr=json
                 }else{
                     console.log(json.error)
                     setError(json.error)
@@ -33,10 +44,12 @@ const AllBooks = () => {
             }
         
         },[user])//user is a dependency
+        
     return ( 
         <div className="allbooks">
             <div className="book">
-                {books && books.map((book)=>(
+            <input type="text" onChange={handleSearch}/>
+                {books && books.filter(obj=>obj.title.toLowerCase().includes(keyWord.toLowerCase())).map((book)=>(
                     <BookDetails key={book._id} book={book}/>
                 ))}
             </div>

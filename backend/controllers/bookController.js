@@ -71,7 +71,11 @@ const updateBook=async (req,res)=>{
         //when given id in the req url parameter is not valid
         return res.status(404).json({error:'No such book is listed'})
     }
-
+    const CurrentBook=await Books.findById(id)
+    if(req.body.totalCopies && (CurrentBook.totalCopies-CurrentBook.nAvailable)>req.body.totalCopies){
+        //when there are reserved or borrowd books more than new total copies
+        return res.status(404).json({error:'New total number of copies cannot accomadate current reservations and borrowed quantity.'})
+    }
     const book=await Books.findByIdAndUpdate({_id:id},{...req.body})
     if(!book){
         return res.status(404).json({error:'No such book is listed'})
