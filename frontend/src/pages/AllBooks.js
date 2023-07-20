@@ -48,7 +48,7 @@ const AllBooks = () => {
     return ( 
         <div className="allbooks">
             <div className="book">
-            <input type="text" onChange={handleSearch}/>
+            <input type="text" placeholder="Search by book title" onChange={handleSearch}/>
                 {books && books.filter(obj=>obj.title.toLowerCase().includes(keyWord.toLowerCase())).map((book)=>(
                     <BookDetails key={book._id} book={book}/>
                 ))}
