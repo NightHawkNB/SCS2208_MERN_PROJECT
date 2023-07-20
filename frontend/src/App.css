@@ -107,15 +107,26 @@ form button{
   margin: 20px ;
   padding: 20px; 
   box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  /* display:grid;
+  grid-template-columns: 3fr 1fr; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-details book-details-info{
+  flex:1;
 }
 
 .book-details span{
+  align-items: j;
   top:20px;
-  right: 20px;
+  right: 10px;
+  left:0;
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
-  margin:5px;
+  margin:0;
+  margin-left:5px;
   border-radius: 50%;
   color: #333;
 }

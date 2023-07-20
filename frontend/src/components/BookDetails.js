@@ -31,15 +31,18 @@ const BookDetails=({book})=>{
     }
     return (
         <div className="book-details">
-            <h4>{book.title}</h4>
-            <p><strong>Author: </strong>{book.author}</p>
-            <p><strong>Total number of copies: </strong>{book.totalCopies}</p>
-            <p><strong>Number of available Copies: </strong>{book.nAvailable}</p>
-            {isFormOpen && <PopupForm book={book}/>}
-            {error && <div className="error">{error}</div>} 
-        
-            {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
-            {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleUpdate}>change_circle</span>}
+            <div className="book-details-info">
+                <h4>{book.title}</h4>
+                <p><strong>Author: </strong>{book.author}</p>
+                <p><strong>Total number of copies: </strong>{book.totalCopies}</p>
+                <p><strong>Number of available Copies: </strong>{book.nAvailable}</p>
+                {isFormOpen && <PopupForm book={book}/>}
+                {error && <div className="error">{error}</div>} 
+            </div>
+            <div className="book-detail-button"> 
+                {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
+                {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleUpdate}>change_circle</span>}
+            </div>
         </div>
     )
 }
