@@ -1,7 +1,6 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useState, useEffect } from "react"
 import ReservationsDetails from "../components/ReservationDetails"
-import ReservationForm from "../components/ReservationForm"
 
 const Reservations = () => {
     const {user} = useAuthContext()
@@ -47,9 +46,6 @@ const Reservations = () => {
                 ))}
             </div>
             {error && <div className="error">{error}</div>}
-            <div>
-                <ReservationForm />
-            </div>
         </div>
      );
 }
