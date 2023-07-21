@@ -5,6 +5,7 @@ const mongoose=require('mongoose')//using mongoose
 const userRoutes=require('./routes/user')
 const bookCrudRoutes=require('./routes/bookcrud')
 const bookRoutes=require('./routes/books')
+const reserveRoutes = require('./routes/reserveRoutes')
 
 //express app
 const app=express()
@@ -34,6 +35,9 @@ app.use('/api/bookcrud',bookCrudRoutes)
 
 //for Book for normal users
 app.use('/api/books',bookRoutes)
+
+//for reservations
+app.use('/api/reserve', reserveRoutes)
 
 //connect to database
 mongoose.connect(process.env.MONGO_URI)//Async in nature, so this will return a promise
