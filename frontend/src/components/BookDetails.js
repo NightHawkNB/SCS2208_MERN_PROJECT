@@ -5,6 +5,10 @@ const BookDetails=({book})=>{
     const {user}=useAuthContext()
     const [error,setError]=useState(null)
     const [isFormOpen,setIsFormOpen]=useState(false)
+    
+    const handleReservation=async()=>{
+        console.log("reserve")
+    }
 
     const handleDelete=async ()=>{
         var result=window.confirm(`Are you sure, you want to delete the book named "${book.title}"?`)
@@ -42,6 +46,7 @@ const BookDetails=({book})=>{
             <div className="book-detail-button"> 
                 {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
                 {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleUpdate}>change_circle</span>}
+                {user && user.userType==='normal' && <span className="material-symbols-outlined" onClick={handleReservation}>anchor</span>}
             </div>
         </div>
     )
