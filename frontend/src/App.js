@@ -21,6 +21,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/allbooks' element={<AllBooks />} />
             <Route path='/available' element={<AvailableBooks />} />
+            <Route path='/reserve' element={<Reseves />} />
           </Routes>
         </div>
       </BrowserRouter>
