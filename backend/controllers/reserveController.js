@@ -1,6 +1,6 @@
 const Reserve = require('../models/reserveModel')
 const Books = require('../models/bookModel')
-const updateBook = require('./bookController')
+const {updateBook} = require('./bookController')
 
 const getAllReserves = async (req, res) => {
 
@@ -24,7 +24,7 @@ const createReserve = async (req, res) => {
     const reservation = await Reserve.create({book_id, title: book.title, user_id})
         .then(async () => {
             try {
-                req.body = {nAvailable: book.nAvailable + 1}
+                req.body = {nAvailable: book.nAvailable - 1}
                 await updateBook(req, res)
             } catch (error) {
                 console.log(error)
@@ -42,11 +42,12 @@ const deleteReserve = async (req, res) => {
 
     const book_id = req.params.id
     const user_id = req.user._id
+    const book = await Books.findOne({_id: book_id})
 
     const reservation = await Reserve.findOneAndDelete({book_id, user_id})
         .then(async () => {
             try {
-                req.body = {$inc: {nAvailable: 1}}
+                req.body = {nAvailable: book.nAvailable + 1}
                 await updateBook(req, res)
             } catch (error) {
                 console.log(error)
@@ -55,14 +56,6 @@ const deleteReserve = async (req, res) => {
         })
         .catch(() => {
             res.status(400).json({error: "Updating the available book count failed - Create Reservation"})
-        })
-
-    const books = await Books.findOneAndUpdate({title: title}, {$inc: {nAvailable: 1}})
-        .then(result => {
-            if(operations) res.status(200).json(result)
-        })
-        .catch(() => {
-            res.status(400).json({error: "Updating the available book count failed - Delete Reservation"})
         })
 }
 

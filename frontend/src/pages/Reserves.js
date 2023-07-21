@@ -4,10 +4,10 @@ import ReservationsDetails from "../components/ReservationDetails"
 import ReservationForm from "../components/ReservationForm"
 
 const Reservations = () => {
-    const {user}=useAuthContext()
+    const {user} = useAuthContext()
 
-    const [reservations,setReservations]=useState([])
-    const [error,setError]=useState(null)
+    const [reservations,setReservations] = useState([])
+    const [error,setError] = useState(null)
 
         useEffect(()=>{
             setError(null)

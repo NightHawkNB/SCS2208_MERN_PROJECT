@@ -34,12 +34,12 @@ const ReservationForm = () => {
         if(!response.ok){
             setError(json.error)
             if(json.emptyValues) setEmptyValues(json.emptyValues)
-            
         } else {
             setBook_id('')
             setError(null)
             setEmptyValues([])
             console.log('New Reservation added',json)
+            window.location.reload()
         }
     }
 
