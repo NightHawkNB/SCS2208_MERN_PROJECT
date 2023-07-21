@@ -24,7 +24,7 @@ const createReserve = async (req, res) => {
     const reservation = await Reserve.create({book_id, title: book.title, user_id})
         .then(async () => {
             try {
-                req.body = {$inc: {nAvailable: -1}}
+                req.body = {nAvailable: book.nAvailable + 1}
                 await updateBook(req, res)
             } catch (error) {
                 console.log(error)

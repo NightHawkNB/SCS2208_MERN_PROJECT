@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import NavBar from './components/NavBar';
 import AllBooks from './pages/AllBooks';
 import AvailableBooks from './pages/AvailableBooks';
+import Reserves from './pages/Reserves'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/allbooks' element={<AllBooks />} />
             <Route path='/available' element={<AvailableBooks />} />
-            <Route path='/reserve' element={<Reseves />} />
+            <Route path='/reserve' element={<Reserves />} />
           </Routes>
         </div>
       </BrowserRouter>
