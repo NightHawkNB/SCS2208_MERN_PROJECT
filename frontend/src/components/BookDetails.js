@@ -1,13 +1,36 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import {useState} from 'react'
 import PopupForm from "./PopupForm"
+
 const BookDetails=({book})=>{
     const {user}=useAuthContext()
     const [error,setError]=useState(null)
     const [isFormOpen,setIsFormOpen]=useState(false)
     
-    const handleReservation=async()=>{
-        console.log("reserve")
+    const handleReservation = async (e) => {
+        e.preventDefault()
+
+        if(!user){
+            setError('You must be logged in!')
+            return
+        }
+
+        await fetch('/api/reserve/' + book._id, {
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'application/json',
+                'Authorization' : `Bearer ${user.token}`
+            },
+            body: JSON.stringify({book_id: book._id})
+        })
+            .then(async result => {
+                setError(null)
+                console.log('New Reservation added', await result.json())
+                window.location.reload()
+            })
+            .catch(err => {
+                setError(err.error)
+            })
     }
 
     const handleDelete=async ()=>{
@@ -15,9 +38,9 @@ const BookDetails=({book})=>{
         if(result){
             console.log("confrirm")
             const response=await fetch('/api/bookcrud/'+book._id,{
-                method:'DELETE',
+                method: 'DELETE',
                 headers:{
-                    'Authorization':`Bearer ${user.token}`
+                    'Authorization' : `Bearer ${user.token}`
                 }
             })
             const json=await response.json()
