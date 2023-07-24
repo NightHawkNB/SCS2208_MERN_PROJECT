@@ -60,9 +60,10 @@ const loginUser=async(req,res)=>{
     
     if(!authorization){//not a google login
         try{
-        const user=await User.login(email,password)
+        
         const {email,password}=req.body
-        const token=createToken(_user._id)
+        const user=await User.login(email,password)
+        const token=createToken(user._id)
         res.status(200).json({fName:user.fName,lName:user.lName,email:user.email,userType:user.userType,token})
 
         }catch (error){
