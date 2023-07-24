@@ -16,7 +16,7 @@ const NavBar=()=>{
     const colorMode=useThemeContext()
     const theme=useTheme()
     return (
-        <header>
+        <header background-color={theme.palette.primary}>
             <nav>
                 <div className="navButtons">
                     <Link to="/"><span>Home</span></Link>
