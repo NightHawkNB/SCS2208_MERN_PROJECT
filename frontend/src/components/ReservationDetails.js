@@ -27,7 +27,7 @@ const ReservationsDetails=({reservation})=>{
     }
 
     return (
-        <div className="book-details">
+        <div className="reservation-details">
             <h4>{reservation.title}</h4>
             <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>
             {error && <div className="error">{error}</div>} 

@@ -40,6 +40,7 @@
 :root{
   --primary:#1aac83;
   --error:#e7195a;
+  --font-size: 0.9em;
 }
 
 div.error{
@@ -113,6 +114,41 @@ form button{
   justify-content: space-between;
 }
 
+.reservation-details{
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px ;
+  padding: 20px; 
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reservation-details h4:hover{
+  cursor:default;
+}
+
+.reservation-details span{
+  align-items: j;
+  top:20px;
+  right: 10px;
+  left:0;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  margin:0;
+  margin-left:5px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.reservation-details h4{
+  margin: 0;
+  font-size: 1.2em;
+  color:var(--primary)
+}
+
 .book-details book-details-info{
   flex:1;
 }
@@ -140,4 +176,78 @@ form button{
   margin: 0;
   font-size: 0.9em;
   color:#555;
+}
+
+/* NavBar Styles */
+header{
+  background-color: white;
+  min-height: 50px;
+  padding: 10px 20px;
+  margin: 0;
+  box-shadow:dimgray 0px 2px 5px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header button {
+  background-color: var(--primary);
+  padding: 10px 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  font-size: var(--font-size);
+}
+
+header button:hover {
+  cursor: pointer;
+}
+
+.navButtons{
+  margin: 10px 0px;
+  flex: 1;
+}
+
+.navButtons a {
+  font-size: var(--font-size);
+  background-color: var(--primary);
+  padding: 10px 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.userDetials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userDetials div {
+  font-size: var(--font-size);
+  font-family: calibri;
+  font-weight: bold;
+  padding: 10px 10px;
+  margin: 0px 10px;
+  background-color:#ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.userDetials div p{
+  margin: 0;
 }

@@ -18,15 +18,22 @@ const NavBar=()=>{
     return (
         <header>
             <nav>
+                <div className="navButtons">
+                    <Link to="/"><span>Home</span></Link>
+                    <Link to="/available"><span>Available Books</span></Link>
+                    <Link to="/reserve"><span>Reservations</span></Link>
+                    {user && user.userType!=='normal' && <Link to="/allbooks"><span>All Books</span></Link>}
+                </div>
+
                 {user ? (
-                    <div className='userDetials'>
-                        <span>Hi {user.fName+" "+user.lName}</span>
+                    <div className='userDetials user-status'>
+                        <div> <span className="material-symbols-outlined">account_circle</span><p>Hi {user.fName+" "+user.lName}</p></div>
                         <button onClick={handleClick}>Log out</button>
                     </div>
                 ):(
-                    <div className='links'>
-                        <Link to='/login'>Login</Link>
-                        <Link to='/signup'>Sign Up</Link>
+                    <div className='links user-status'>
+                        <button><Link to='/login'>Login</Link></button>
+                        <button><Link to='/signup'>Sign Up</Link></button>
                     </div>
                 )}
                 <IconButton onClick={()=>colorMode.toggleColorMode()}>
