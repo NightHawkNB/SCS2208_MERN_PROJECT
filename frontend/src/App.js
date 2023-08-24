@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import NavBar from './components/NavBar';
 import AllBooks from './pages/AllBooks';
 import AvailableBooks from './pages/AvailableBooks';
+import PageNotFound from './pages/PageNotFound';
 import Reserves from './pages/Reserves'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/allbooks' element={<AllBooks />} />
                 <Route path='/available' element={<AvailableBooks />} />
                 <Route path='/reserve' element={<Reserves />} />
+                <Route path='*' element={<PageNotFound />} />
               </Routes>
             </div>
           </BrowserRouter>
