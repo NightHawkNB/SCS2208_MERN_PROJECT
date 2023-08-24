@@ -1,4 +1,4 @@
-import {createContext,useState,useMemo} from 'react'
+import {createContext,useState,useMemo,useEffect} from 'react'
 import {createTheme} from '@mui/material'
 
 //color design token
@@ -60,7 +60,7 @@ export const tokens=(mode)=>({
             900: "#151632"
         }
     }:{
-        
+       
         grey: {
             100: "#141414",
             200: "#292929",
@@ -200,11 +200,30 @@ export const ThemeContext=createContext({
 })
 
 export const useMode=()=>{
-    const [mode,setMode]=useState('dark')
+    const [mode,setMode]=useState(()=>{
+        const theme=JSON.parse(localStorage.getItem('theme'))
+        if(theme){
+            return theme
+        }else return 'dark'
+    })
+
+    useEffect(()=>{
+        const theme=JSON.parse(localStorage.getItem('theme'))
+        if(theme){
+            console.log("loc",theme)
+            setMode(theme)
+        }else localStorage.setItem('theme',JSON.stringify(mode))
+    },[])//'[]' so it should fire only once (at rendering)
+
+    useEffect(()=>{
+        //saving to local storage
+        localStorage.setItem('theme',JSON.stringify(mode))
+    },[mode])//'[]' so it should fire only once (at rendering)
 
     const colorMode=useMemo(
         ()=>({
             toggleColorMode:()=>{
+                console.log("tog")
                 setMode((prev)=>(prev==='light'?'dark':'light'))
                 themeSettings(mode)}
         })
