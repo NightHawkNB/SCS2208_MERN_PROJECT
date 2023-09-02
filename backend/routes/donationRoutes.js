@@ -3,9 +3,9 @@ const router = express.Router()
 
 // Controllers
 const {
-    getAllReserves,
-    createReserve,
-    deleteReserve
+    getAllDonations,
+    createDonation,
+    deleteDonation
 } = require('../controllers/donationController')
 
 
