@@ -11,7 +11,7 @@ const {
 router.get('/', getAllFines)
 
 //get fines for specific borrow id
-router.get('/boroow_id',getFinesAid)
+router.get('/:borrow_id',getFinesAid)
 
 //POST new fines
 router.post('/',createFines)
