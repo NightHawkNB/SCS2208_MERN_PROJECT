@@ -1,11 +1,13 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import {useState} from 'react'
 import PopupForm from "./PopupForm"
+import PopupForm2 from "./PopupForm2"
 
 const BookDetails=({book})=>{
     const {user}=useAuthContext()
     const [error,setError]=useState(null)
     const [isFormOpen,setIsFormOpen]=useState(false)
+    const [isFormOpen2, setIsFormOpen2] = useState(false)
     
     const handleReservation = async (e) => {
         e.preventDefault()
@@ -53,9 +55,14 @@ const BookDetails=({book})=>{
         }
     }
 
-    const handleUpdate=(e)=>{
+    const handleUpdate= (e) => {
         setIsFormOpen(!isFormOpen)
     }
+
+    const handleBorrow = (e) => {
+        setIsFormOpen2(!isFormOpen2)
+    }
+
     return (
         <div className="book-details">
             <div className="book-details-info">
@@ -64,11 +71,13 @@ const BookDetails=({book})=>{
                 <p><strong>Total number of copies: </strong>{book.totalCopies}</p>
                 <p><strong>Number of available Copies: </strong>{book.nAvailable}</p>
                 {isFormOpen && <PopupForm book={book}/>}
+                {isFormOpen2 && <PopupForm2 book={book}/>}
                 {error && <div className="error">{error}</div>} 
             </div>
             <div className="book-detail-button"> 
                 {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
                 {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleUpdate}>change_circle</span>}
+                {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleBorrow}>book_3</span>}
                 {user && user.userType==='normal' && <span className="material-symbols-outlined" onClick={handleReservation}>anchor</span>}
             </div>
         </div>
