@@ -26,7 +26,7 @@ const createDonation = async (req, res) => {
     else {
         const book_id = book._id
 
-        await Donate.create({book_id, doner})
+        await Donate.create({book_id, title, doner})
             .then(result => res.status(200).json(result))
             .catch(err => res.status(400).json({error: "Donation record creation failed"}))
     }   

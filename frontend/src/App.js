@@ -14,6 +14,7 @@ import AddBooks from './pages/AddBooks';
 import AvailableBooks from './pages/AvailableBooks';
 import PageNotFound from './pages/PageNotFound';
 import Reserves from './pages/Reserves'
+import Donations from './pages/Donations'
 
 function App() {
   const [theme,colorMode]=useMode()
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/addbooks' element={<AddBooks />} />
                 <Route path='/available' element={<AvailableBooks />} />
                 <Route path='/reserve' element={<Reserves />} />
+                <Route path='/donate' element={<Donations />} />
                 <Route path='*' element={<PageNotFound />} />
               </Routes>
             </div>
