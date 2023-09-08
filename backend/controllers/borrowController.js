@@ -28,6 +28,8 @@ const createBorrow = async (req, res) => {
     const duration = 2;
     
     const user = await User.findOne({email})
+    if(!user) res.status(400).json({error: "Invalid User Email"})
+
     const book = await Books.findOne({_id: book_id})
     const user_id = user._id;
 
