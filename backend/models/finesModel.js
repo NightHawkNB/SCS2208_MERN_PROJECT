@@ -6,6 +6,10 @@ const finesSchema = new Schema({
         type:String,
         required:true
     },
+    user_name: {
+        type:String,
+        required: true
+    },
     borrow_id:{
         type:String,
         required:true

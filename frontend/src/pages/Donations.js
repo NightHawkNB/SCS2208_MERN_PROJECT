@@ -127,7 +127,7 @@ const Donations = () => {
             </div>
             {error && <div className="error">{error}</div>}
         </div>
-     );
+     )
 }
 
 export default Donations

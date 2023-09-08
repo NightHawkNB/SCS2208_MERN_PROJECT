@@ -98,11 +98,13 @@ const returnBorrow = async (req, res) => {
 
     await Borrow.findOneAndUpdate({_id: borrow_id}, {isReturned: 1})
         .then(async (result) => {
-            await Books.findByIdAndUpdate({_id:book_id},{nAvailable: book.nAvailable + 1})
+            await Books.findOneAndUpdate({_id:book_id},{nAvailable: book.nAvailable + 1})
                 .then(async () => {
                     if(date_diff >= allowed_duration) {
-                        req.body.amount = date_diff * 10
-                        await createFines(req, res)
+                        const amount = date_diff * 10
+                        const user_name = borrow.name
+                        await Fines.create({user_id, user_name, borrow_id, amount})
+                            .catch(() => res.status(400).json({error: "Fine creation failed"}))
                     }
                     res.status(200).json(result)
                 })

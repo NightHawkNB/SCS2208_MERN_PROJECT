@@ -16,6 +16,7 @@ import AvailableBooks from './pages/AvailableBooks';
 import PageNotFound from './pages/PageNotFound';
 import Reserves from './pages/Reserves'
 import Donations from './pages/Donations'
+import Fines from './pages/Fines'
 
 function App() {
   const [theme,colorMode]=useMode()
@@ -34,10 +35,10 @@ function App() {
                 <Route path='/allbooks' element={<AllBooks />} />
                 <Route path='/addbooks' element={<AddBooks />} />
                 <Route path='/available' element={<AvailableBooks />} />
-                  <Route path='/borrowdetails' element={<AllBorrows/>} />
+                <Route path='/borrowdetails' element={<AllBorrows/>} />
                 <Route path='/reserve' element={<Reserves />} />
-                  <Route path='/donate' element={<Donations />} />
-
+                <Route path='/donate' element={<Donations />} />
+                <Route path='/fines' element={<Fines />} />
                 <Route path='*' element={<PageNotFound />} />
               </Routes>
             </div>
