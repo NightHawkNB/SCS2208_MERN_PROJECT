@@ -6,6 +6,10 @@ const donateSchema = new Schema({
         type: String,
         required: true
     },
+    title: {
+        type: String,
+        required: true
+    },
     doner: {
         type: String,
         required: true

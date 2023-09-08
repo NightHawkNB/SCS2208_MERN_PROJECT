@@ -15,3 +15,34 @@ code {
 .pages{
   margin: 20px;
 }
+
+.two-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-panel {
+  flex: 1;
+  margin-right: 25px;
+  padding-right: 25px;
+  border-right: 4px solid var(--primary);
+}
+
+.right-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Calibri;
+}
+
+.right-panel form input {
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.right-panel form button {
+  font-family: Calibri;
+  border-radius: 5px;
+  margin-top: 10px;
+}
