@@ -7,7 +7,7 @@ const ListBorrow = () => {
     const [borrows,setBorrows]=useState([])
     const [error,setError]=useState(null)
     const [keyWord,setKeyWord]=useState('');
-
+    const [onlyNotReturned,setOnlyNotReturned]=useState(false)
     const handleSearch=(e)=>{
         setKeyWord(e.target.value)
     }
@@ -44,13 +44,24 @@ const ListBorrow = () => {
     
     },[user])
 
-
+    const handleCheckboxChange=()=>{
+        setOnlyNotReturned(!onlyNotReturned)
+    }
     return ( 
         <div className="allborrow">
-            <div className="borrow">
+            
+          <div className="borrow-search">
             <input type="text" placeholder="Search by email" onChange={handleSearch}/>
+            <div className="borrow-checkbox"><input
+            type="checkbox"
+            checked={onlyNotReturned}
+            onChange={handleCheckboxChange}
+            placeholder="Search by email"
+            /><label>Show only borrows that are not returned</label></div>
+          </div>
+          <div className="borrow">
                 {borrows && borrows.filter(obj=>obj.email.toLowerCase().includes(keyWord.toLowerCase())).map((borrow)=>(
-                    <BorrowDetails key={borrow._id} borrow={borrow}/>
+                    (onlyNotReturned && borrow.isReturned)?'':<BorrowDetails key={borrow._id} borrow={borrow}/>
                 ))}
             </div>
             {error && <div className="error">{error}</div>} 

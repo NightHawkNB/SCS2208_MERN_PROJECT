@@ -286,3 +286,12 @@ header button:hover {
 .userDetials div p{
   margin: 0;
 }
+
+.borrow-search {
+  display: block;
+  justify-content: space-between;
+}
+.borrow-checkbox{
+  display: inline-flex;
+  margin-top: 20px;
+}
