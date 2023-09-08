@@ -72,6 +72,7 @@ const Donations = () => {
             setError(null)
             setEmptyValues([])
             console.log('New Donation added', json)
+            window.location.reload()
         }
     }
 

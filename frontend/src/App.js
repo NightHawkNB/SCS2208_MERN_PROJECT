@@ -11,7 +11,6 @@ import Home from './pages/Home'
 import NavBar from './components/NavBar';
 import AllBooks from './pages/AllBooks';
 import AllBorrows from './pages/AllBorrows';
-import AddBooks from './pages/AddBooks';
 import AvailableBooks from './pages/AvailableBooks';
 import PageNotFound from './pages/PageNotFound';
 import Reserves from './pages/Reserves'
@@ -33,7 +32,6 @@ function App() {
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/allbooks' element={<AllBooks />} />
-                <Route path='/addbooks' element={<AddBooks />} />
                 <Route path='/available' element={<AvailableBooks />} />
                 <Route path='/borrowdetails' element={<AllBorrows/>} />
                 <Route path='/reserve' element={<Reserves />} />

@@ -40,6 +40,7 @@ const BookForm=()=>{
             setError(null)
             setEmptyValues([])
             console.log('New Book added',json)
+            window.location.reload()
         }
     }
     return(
