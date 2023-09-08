@@ -10,10 +10,6 @@ const borrowSchema = new Schema({
         type: String,
         required: true
     },
-    borrow_date: {
-        type: String,
-        required: true
-    },
     duration: {
         type: Number,
         required: true

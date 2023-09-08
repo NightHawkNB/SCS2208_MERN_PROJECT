@@ -11,16 +11,16 @@ const {
     updateBorrow,
 } = require('../controllers/borrowController')
 
-router.use(requireAuth)
+// router.use(requireAuth)
 
 router.get('/', getAllBorrows)
 
-router.get('/:id', getBorrow)
+router.get('/:_id', getBorrow)
 
 router.post('/', createBorrow)
 
-router.delete('/:id', deleteBorrow)
+router.delete('/', deleteBorrow)
 
-router.patch('/:id', updateBorrow)
+router.patch('/', updateBorrow)
 
 module.exports = router
