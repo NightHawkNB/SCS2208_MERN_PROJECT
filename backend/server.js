@@ -9,7 +9,7 @@ const reserveRoutes = require('./routes/reserveRoutes')
 const finesRoutes=require('./routes/finesRoutes')
 const borrowRoutes = require('./routes/borrowRoutes')
 const donationRoutes = require('./routes/donationRoutes')
-
+const getUserRoutes=require('./routes/getUserRoutes')
 //express app
 const app=express()
 app.use(express.json())//for any req body is passes and attached to req obj body
@@ -48,6 +48,9 @@ app.use('/api/borrow', borrowRoutes)
 app.use('api/donate',donationRoutes)
 //for fines
 app.use('/api/fines',finesRoutes)
+//to get user details for a given id
+app.use('/api/getuser',getUserRoutes)
+
 
 //connect to database
 mongoose.connect(process.env.MONGO_URI)//Async in nature, so this will return a promise

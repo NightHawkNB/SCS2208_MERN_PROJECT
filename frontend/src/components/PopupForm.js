@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useTheme } from '@emotion/react';
+
 //to convert to title case and trim
 function toTitleCase(str) {
     str=str.trim()
@@ -13,7 +15,7 @@ const PopupForm = ({book})=>{
     const [author,setAuthor]=useState('')
     const [totalCopies,setTotalCopies]=useState('')
     const {user}=useAuthContext()
-
+    const theme=useTheme()
     const handleSubmit=async (e)=>{
         e.preventDefault()
         var newDetails={}
@@ -44,7 +46,7 @@ const PopupForm = ({book})=>{
         }
     }
     return(
-        <div className='popup'>
+        <div className={(theme.palette.mode==='dark') ? 'popup-dark' : 'popup'}>
             <form onSubmit={handleSubmit}>
                 <h3>Update Form for "{book.title}"</h3>
                 

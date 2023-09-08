@@ -69,8 +69,30 @@ input.error{
   z-index: 999;
   transition: opacity 0.3s, visibility 0.3s;
 }
-
-
+.popup-dark{
+  position:absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background: #282c34;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.popup-dark label, input{
+  display: block;
+}
+.popup-dark input{
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 .popup label, input{
   display: block;
 }
@@ -148,7 +170,16 @@ form button{
   font-size: 1.2em;
   color:var(--primary)
 }
-
+.reservation-details h6{
+  margin: 0;
+  font-size: 0.8em;
+  color:black;
+}
+.reservation-details h5{
+  margin: 0;
+  font-size: 1em;
+  color:black;
+}
 .book-details book-details-info{
   flex:1;
 }
