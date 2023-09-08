@@ -41,6 +41,7 @@ const Reservations = () => {
     return ( 
         <div className="allbooks">
             <div className="book">
+                <h3>Showing All Reservations</h3>
                 {reservations && reservations.map(reservation => (
                     <ReservationsDetails key={reservation._id} reservation={reservation}/>
                 ))}
