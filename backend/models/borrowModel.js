@@ -13,6 +13,10 @@ const borrowSchema = new Schema({
     duration: {
         type: Number,
         required: true
+    },
+    isReturned: {
+        type: Boolean,
+        required: true
     }
 }, {timestamps: true})
 
