@@ -7,6 +7,8 @@ const bookCrudRoutes=require('./routes/bookcrud')
 const bookRoutes=require('./routes/books')
 const reserveRoutes = require('./routes/reserveRoutes')
 const finesRoutes=require('./routes/finesRoutes')
+const borrowRoutes = require('./routes/borrow')
+const donationRoutes = require('./routes/donationRoutes')
 
 //express app
 const app=express()
@@ -40,6 +42,10 @@ app.use('/api/books',bookRoutes)
 //for reservations
 app.use('/api/reserve', reserveRoutes)
 
+//for borrowing
+app.use('/api/borrow', borrowRoutes)
+//for donations
+app.use('api/donate',donationRoutes)
 //for fines
 app.use('/api/fines',finesRoutes)
 
