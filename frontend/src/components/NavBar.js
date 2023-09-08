@@ -22,6 +22,7 @@ const NavBar=()=>{
                     <Link to="/"><span>Home</span></Link>
                     <Link to="/available"><span>Available Books</span></Link>
                     <Link to="/reserve"><span>Reservations</span></Link>
+                    <Link to="/borrowdetails"><span>Borrowing Details</span></Link>
                     {user && user.userType!=='normal' && <Link to="/allbooks"><span>All Books</span></Link>}
                     {user && user.userType!=='normal' && <Link to="/addbooks"><span>Add Books</span></Link>}
 
