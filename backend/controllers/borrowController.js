@@ -32,8 +32,9 @@ const createBorrow = async (req, res) => {
 
     const book = await Books.findOne({_id: book_id})
     const user_id = user._id;
-
-    await Borrow.create({user_id, book_id, duration, isReturned})
+    const title=book.title;
+    const name=user.fName+' '+user.lName;
+    await Borrow.create({user_id, book_id, duration, isReturned,email,title,name})
         .then(async (result) => {
             try {
                 const reserve = await Reserve.findOne({user_id, book_id})
@@ -103,6 +104,7 @@ const returnBorrow = async (req, res) => {
                         req.body.amount = date_diff * 10
                         await createFines(req, res)
                     }
+                    res.status(200).json(result)
                 })
                 .catch(err => res.status(400).json({error: "Updating the book failed"}))
         })
