@@ -45,7 +45,7 @@ app.use('/api/reserve', reserveRoutes)
 //for borrowing
 app.use('/api/borrow', borrowRoutes)
 //for donations
-app.use('api/donate',donationRoutes)
+app.use('/api/donate', donationRoutes)
 //for fines
 app.use('/api/fines',finesRoutes)
 //to get user details for a given id

@@ -5,14 +5,16 @@ const router = express.Router()
 const {
     getAllDonations,
     createDonation,
-    deleteDonation
+    deleteDonation,
+    updateDonation
 } = require('../controllers/donationController')
-
 
 router.get('/', getAllDonations)
 
-router.post('/:id', createDonation)
+router.post('/', createDonation)
 
 router.delete('/:id', deleteDonation)
+
+router.patch('/:id', updateDonation)
 
 module.exports = router

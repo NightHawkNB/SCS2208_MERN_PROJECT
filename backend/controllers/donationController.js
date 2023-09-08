@@ -1,66 +1,58 @@
 const Donate = require('../models/donationModel')
 const Books = require('../models/bookModel')
-const {updateBook} = require('./bookController')
+
+function toTitleCase(str) {
+    str=str.trim()
+    return str.toLowerCase().replace(/(^|\s)\S/g, (char) => char.toUpperCase());
+  }
 
 const getAllDonations = async (req, res) => {
 
-    const user_id = req.user._id
-
-    await Donate.find({user_id}).sort({createdAt:-1})
+    await Donate.find({}).sort({createdAt:-1})
         .then((result) => {
             res.status(200).json(result)
         })
         .catch(err => {
-            res.status(404).json({error: err.message})
+            res.status(404).json({error: "Fetching donations failed"})
         })
 }
 
 const createDonation = async (req, res) => {
 
-    const book_id = req.params.id
-    const user_id = req.user._id
-    const book = await Books.findOne({_id: book_id})
-
-    const reservation = await Reserve.create({book_id, title: book.title, user_id})
-        .then(async () => {
-            try {
-                req.body = {nAvailable: book.nAvailable - 1}
-                await updateBook(req, res)
-            } catch (error) {
-                console.log(error)
-                res.status(400).json({error: 'Update book failed'})
-            }
-        })
-        .catch(() => {
-            res.status(400).json({error: "Creating a reservation failed"})
-        })
-
+    const {title, author, totalCopies, doner} = req.body
     
+    const book = await Books.create({title: toTitleCase(title), author, nAvailable:totalCopies, totalCopies})
+    if(!book) res.status(400).json({error: "Book creation failed"})
+    else {
+        const book_id = book._id
+
+        await Donate.create({book_id, doner})
+            .then(result => res.status(200).json(result))
+            .catch(err => res.status(400).json({error: "Donation record creation failed"}))
+    }   
 }
 
 const deleteDonation = async (req, res) => {
 
-    const book_id = req.params.id
-    const user_id = req.user._id
-    const book = await Books.findOne({_id: book_id})
+    const donation_id = req.params.id
 
-    const reservation = await Donate.findOneAndDelete({book_id, user_id})
-        .then(async () => {
-            try {
-                req.body = {nAvailable: book.nAvailable + 1}
-                await updateBook(req, res)
-            } catch (error) {
-                console.log(error)
-                res.status(400).json({error: 'Update book failed'})
-            }
-        })
-        .catch(() => {
-            res.status(400).json({error: "Updating the available book count failed - Create Reservation"})
-        })
+    await Donate.findOneAndDelete({_id: donation_id})
+        .then(result => res.status(200).json(result))
+        .catch(err => res.status(400).json({error: "Deleting donation failed"}))
+}
+
+const updateDonation = async (req, res) => {
+    const donation_id = req.params.id
+    const doner = req.body.doner
+
+    await Donate.findOneAndUpdate({_id: donation_id}, {doner})
+        .then(result => res.status(200).json(result))
+        .catch(err => res.status(400).json({error: "Updating donation failed"}))
 }
 
 module.exports = {
     getAllDonations,
     createDonation,
-    deleteDonation
+    deleteDonation,
+    updateDonation
 }
