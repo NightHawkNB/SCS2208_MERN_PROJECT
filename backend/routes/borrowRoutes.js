@@ -8,7 +8,7 @@ const {
     getBorrow,
     createBorrow,
     deleteBorrow,
-    updateBorrow,
+    returnBorrow,
 } = require('../controllers/borrowController')
 
 // router.use(requireAuth)
@@ -19,8 +19,8 @@ router.get('/:_id', getBorrow)
 
 router.post('/', createBorrow)
 
-router.delete('/', deleteBorrow)
+router.delete('/:borrow_id', deleteBorrow)
 
-router.patch('/', updateBorrow)
+router.patch('/', returnBorrow)
 
 module.exports = router
