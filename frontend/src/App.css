@@ -44,6 +44,10 @@
 }
 
 div.error{
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 25%;
   padding: 10px;
   background:#ffefef;
   border: 1px solid var(--error);
