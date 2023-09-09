@@ -19,23 +19,25 @@ const Signup=()=>{
         await signup(fName,lName,email,password,'normal')//norml user signup
     }
     return (
-        <form className="signup" onSubmit={handleSubmit}>
-            <h3>SignUp</h3>
-            <label>First Name:</label>
-            <input type="text" onChange={(e)=>setFname(e.target.value)} value={fName}/>
-            <label>Last Name:</label>
-            <input type="text" onChange={(e)=>setLname(e.target.value)} value={lName}/>
-            <label>Email:</label>
-            <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email}/>
-            <label>Password:</label>
-            <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
-            <button disabled={isLoading}>SignUp</button>
-            {error && <div className="error">{error}</div>} 
-            <GoogleLogin
-            onSuccess={googleSignUpSuccess}
-            onError={(error)=>console.log(error)}
-            />
-        </form>
+        <div className="form-container">
+            <form className="login" onSubmit={handleSubmit}>
+                <h3>SignUp</h3>
+                <label>First Name:</label>
+                <input type="text" onChange={(e)=>setFname(e.target.value)} value={fName}/>
+                <label>Last Name:</label>
+                <input type="text" onChange={(e)=>setLname(e.target.value)} value={lName}/>
+                <label>Email:</label>
+                <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+                <label>Password:</label>
+                <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+                <button disabled={isLoading}>SignUp</button>
+                {error && <div className="error">{error}</div>} 
+                <GoogleLogin
+                onSuccess={googleSignUpSuccess}
+                onError={(error)=>console.log(error)}
+                />
+            </form>
+        </div>
         
     )
 }

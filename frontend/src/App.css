@@ -122,10 +122,48 @@ form button{
 .login {
   padding: 1em;
   background: hsl(233deg 36% 38%);
-  color: hsl(0 0 100);
+  color: white;
 
-  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 25%;
+
+  border-radius: 5px;
   font-weight: 600;
+  padding-bottom: 30px;
+  margin-top: 50px;
+}
+
+.login input {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+}
+.login label {
+  margin: 0px;
+}
+
+.login button {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  width: 68%;
+}
+
+.login h3 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-details{
@@ -273,6 +311,7 @@ header button:hover {
   font-size: var(--font-size);
   font-family: calibri;
   font-weight: bold;
+  color: white;
   padding: 10px 10px;
   margin: 0px 10px;
   background-color:#1aac83;
