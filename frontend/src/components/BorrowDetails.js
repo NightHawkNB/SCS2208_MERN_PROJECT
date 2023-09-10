@@ -51,9 +51,9 @@ const BorrowDetails = ({borrow}) => {
         <div className="reservation-details">
             <div>
                 {user && user.userType!=='normal'&& <h4>Borrower Name: {borrow.name}</h4>}
-                {<h4>Borrowed Book Title: {borrow.title}</h4>}
-                {user && user.userType!=='normal'&& <h5>Borrower email: {borrow.email}</h5>}
-                {<h5>Borrowed Date: {borrow.createdAt}</h5> }
+                {<h4>Borrowed Book Title: <font className="wei-norm">{borrow.title}</font></h4>}
+                {user && user.userType!=='normal'&& <h5>Borrower email: <font className="wei-norm">{borrow.email}</font></h5>}
+                {<h5>Borrowed Date: <font className="wei-norm">{borrow.createdAt}</font></h5> }
                 {user && user.userType!=='normal'&& <h5 className={borrow.isReturned?'green-text':'blue-text'}>Is returned: <font>{borrow.isReturned?'Yes':'No'}</font></h5>} 
                 {error && <div className="error">{error}</div>}
             </div>

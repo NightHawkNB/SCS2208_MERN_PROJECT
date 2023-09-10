@@ -35,8 +35,8 @@ const DonationDetails = ({donation}) => {
     return (
         <div className="reservation-details">
             <div>
-                <h5>Doner : {donation.doner}</h5>
-                <h5>Book Title : {donation.title}</h5>
+                <h5>Doner : <font className="wei-norm">{donation.doner}</font></h5>
+                <h5>Book Title : <font  className="wei-norm">{donation.title}</font></h5>
             </div>
             {isFormOpen && <PopupForm3 donation={donation}/>}
             <div>

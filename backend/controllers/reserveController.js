@@ -30,7 +30,7 @@ const createReserve = async (req, res) => {
     const user_id = req.user._id
     const book = await Books.findOne({_id: book_id})
 
-    const reservation = await Reserve.create({book_id, title: book.title, user_id})
+    await Reserve.create({book_id, title: book.title, user_id})
         .then(async () => {
             try {
                 req.body = {nAvailable: book.nAvailable - 1}
@@ -53,7 +53,7 @@ const deleteReserve = async (req, res) => {
     const user_id = req.user._id
     const book = await Books.findOne({_id: book_id})
 
-    const reservation = await Reserve.findOneAndDelete({book_id, user_id})
+    await Reserve.findOneAndDelete({book_id, user_id})
         .then(async () => {
             try {
                 req.body = {nAvailable: book.nAvailable + 1}

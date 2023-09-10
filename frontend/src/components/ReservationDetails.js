@@ -60,11 +60,15 @@ const ReservationsDetails=({reservation})=>{
     return (
         <div className="reservation-details">
             <div>
-                <h4>{reservation.title}</h4>
+                <h4><font color="cornflowerblue">Book Title : </font>{reservation.title}</h4>
                 {user.userType!=='normal' && <h5>Details of Reservation Holder:</h5>}
-                {user.userType!=='normal' && <h6>User ID: {reservation.user_id}</h6>}
-                {user.userType!=='normal' && <h6>Email: {email}</h6>}
-                {user.userType!=='normal' && <h6>Customer Name: {name}</h6>}
+                {user.userType!=='normal' &&
+                    <div className="margin-left">
+                        <h6>User ID: <font className="wei-norm">{reservation.user_id}</font></h6>
+                        <h6>Name: <font className="wei-norm">{name}</font></h6>
+                        <h6>Email: <font className="wei-norm">{email}</font></h6>
+                    </div>
+                }
             </div>
             <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>
             {error && <div className="error">{error}</div>}

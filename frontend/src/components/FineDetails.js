@@ -35,9 +35,9 @@ const FineDetails = ({fine}) => {
     return (
         <div className="reservation-details">
             <div>
-                <h5>User : {fine.user_name}</h5>
-                <h5>Amount : {fine.amount}</h5>
-                <h5>Created Date : {fine.createdAt}</h5>
+                <h5>User : <font className="wei-norm">{fine.user_name}</font></h5>
+                <h5>Amount : <font className="wei-norm">{fine.amount}</font></h5>
+                <h5>Created Date : <font className="wei-norm">{fine.createdAt}</font></h5>
             </div>
             {isFormOpen && <PopupForm4 fine={fine}/>}
             <div>
