@@ -194,7 +194,6 @@ form button{
 }
 
 .reservation-details span{
-  align-items: j;
   top:20px;
   right: 10px;
   left:0;
@@ -333,4 +332,17 @@ header button:hover {
 .borrow-checkbox{
   display: inline-flex;
   margin-top: 20px;
+}
+
+.green-text font {
+  color: var(--primary);
+  font-size: 1.0rem;
+  font-weight: bold;
+
+}
+
+.blue-text font {
+  color: cornflowerblue;
+  font-size: 1.0rem;
+  font-weight: bold;
 }

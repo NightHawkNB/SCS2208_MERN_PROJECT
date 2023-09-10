@@ -1,10 +1,6 @@
 import { useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 
-
-
-
-
 const BorrowDetails = ({borrow}) => {
     const {user} = useAuthContext()
     const [error,setError]=useState(null)
@@ -55,10 +51,10 @@ const BorrowDetails = ({borrow}) => {
         <div className="reservation-details">
             <div>
                 {user && user.userType!=='normal'&& <h4>Borrower Name: {borrow.name}</h4>}
-                {user && user.userType!=='normal'&& <h4>Borrower email: {borrow.email}</h4>}
                 {<h4>Borrowed Book Title: {borrow.title}</h4>}
-                {<h4>Borrowed Date: {borrow.createdAt}</h4> }
-                {user && user.userType!=='normal'&& <h4>Is returned: {borrow.isReturned?'Yes':'No'}</h4>} 
+                {user && user.userType!=='normal'&& <h5>Borrower email: {borrow.email}</h5>}
+                {<h5>Borrowed Date: {borrow.createdAt}</h5> }
+                {user && user.userType!=='normal'&& <h5 className={borrow.isReturned?'green-text':'blue-text'}>Is returned: <font>{borrow.isReturned?'Yes':'No'}</font></h5>} 
                 {error && <div className="error">{error}</div>}
             </div>
             <div className="book-detail-button">
