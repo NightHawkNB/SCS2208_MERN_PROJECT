@@ -52,8 +52,6 @@ const ReservationsDetails=({reservation})=>{
         }
         if(user.userType!=='normal'){
             fetchUserDetails()
-        }else{
-            setError('You are not authorized!')
         }
     
     },[user,reservation])
@@ -69,7 +67,7 @@ const ReservationsDetails=({reservation})=>{
                 {user.userType!=='normal' && <h6>Customer Name: {name}</h6>}
             </div>
             <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>
-            {error && <div className="error">{error}</div>} 
+            {error && <div className="error">{error}</div>}
         </div>
     )
 }

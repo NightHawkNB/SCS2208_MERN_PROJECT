@@ -11,11 +11,12 @@ const Login=()=>{
     const handleSubmit=async(e)=>{
         e.preventDefault()
         await login(email,password)
-        
+        if(login) window.location.href = "/available"
     }
 
     const googleLoginSuccess=async (e)=>{
         await googleLogin(e)
+        window.location.href = "/available"
     }
     return (
         <div className="form-container">
