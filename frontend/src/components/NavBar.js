@@ -6,6 +6,8 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import { IconButton } from '@mui/material';
 import { useTheme } from '@emotion/react';
+import whiteLogo from './full-logo-white.png'
+import blackLogo from './full-logo-black.png'
 
 const NavBar=()=>{
     const {logout}=useLogout()
@@ -18,9 +20,10 @@ const NavBar=()=>{
     return (
         <header background-color={theme.palette.primary}>
             <nav>
+                <img src={theme.palette.mode==='dark'?whiteLogo:blackLogo} height={50}  />   
                 <div className="navButtons">
                     <Link to="/"><span>Home</span></Link>
-                    <Link to="/available"><span>Available Books</span></Link>
+                    {/* <Link to="/available"><span>Available Books</span></Link> */}
                     <Link to="/reserve"><span>Reservations</span></Link>
                     <Link to="/borrowdetails"><span>Borrowing Details</span></Link>
                     {user && user.userType!=='normal' && <Link to="/allbooks"><span>All Books</span></Link>}
