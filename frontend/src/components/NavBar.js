@@ -26,6 +26,7 @@ const NavBar=()=>{
                     {user && user.userType!=='normal' && <Link to="/allbooks"><span>All Books</span></Link>}
                     {user && user.userType!=='normal' && <Link to="/donate"><span>Donations</span></Link>}
                     {user && user.userType!=='normal' && <Link to="/fines"><span>Fines</span></Link>}
+                    {user && user.userType!=='normal' && <Link to="/manageusers"><span>Manage Users</span></Link>}
 
                 </div>
 

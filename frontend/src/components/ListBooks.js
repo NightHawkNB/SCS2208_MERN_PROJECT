@@ -31,8 +31,23 @@ const ListBooks = ({url}) => {
                 setError(json.error)
             }
         }
+        const fetchBooksWithoutToken=async ()=>{
+            const response = await fetch(url)
+
+            const json=await response.json()
+
+            if(response.ok){
+                console.log(json)
+                setBooks(json)
+            }else{
+                console.log(json.error)
+                setError(json.error)
+            }
+        }
         if(user){
             fetchBooks()
+        }else if(url==='/api/books/available'){
+            fetchBooksWithoutToken()
         }else{
             setError('You must be logged in!')
         }

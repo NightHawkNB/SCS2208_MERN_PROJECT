@@ -16,6 +16,7 @@ import PageNotFound from './pages/PageNotFound';
 import Reserves from './pages/Reserves'
 import Donations from './pages/Donations'
 import Fines from './pages/Fines'
+import ManageUsers from './pages/ManageUsers'
 
 function App() {
   const [theme,colorMode]=useMode()
@@ -37,6 +38,7 @@ function App() {
                 <Route path='/reserve' element={<Reserves />} />
                 <Route path='/donate' element={<Donations />} />
                 <Route path='/fines' element={<Fines />} />
+                <Route path='/manageusers' element={<ManageUsers />} />
                 <Route path='*' element={<PageNotFound />} />
               </Routes>
             </div>

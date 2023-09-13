@@ -1,12 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const requireAuth = require('../middleware/requireAuth')
+const requireHigherAuth = require('../middleware/requireHigherAuth')
 
 // Controllers
-const {getUserDetails} = require('../controllers/getUserController')
+const {getUserDetails,getAllUsers,deleteUser} = require('../controllers/getUserController')
 
-router.use(requireAuth)
+router.use(requireHigherAuth)
 
 router.get('/:id', getUserDetails);
+router.get('/', getAllUsers);
+router.delete('/:id', deleteUser);
 
 module.exports = router
