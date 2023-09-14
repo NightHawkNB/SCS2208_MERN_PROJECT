@@ -58,7 +58,7 @@ const ListBorrow = () => {
         <div className="allborrow">
             
           <div className="borrow-search">
-            <input type="text" placeholder="Search by email" onChange={handleSearch}/>
+            <input className="search-field" type="text" placeholder="Search by email" onChange={handleSearch}/>
             <div className="borrow-checkbox"><input
             type="checkbox"
             checked={onlyNotReturned}

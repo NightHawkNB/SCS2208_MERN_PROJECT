@@ -286,15 +286,17 @@ header button:hover {
 }
 
 .navButtons{
-  margin: 10px 0px;
+  padding: 10px 20px;
   flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .navButtons a {
   font-size: var(--font-size);
   background-color: var(--primary);
   padding: 10px 10px;
-  margin: 0px 10px;
   border-radius: 5px;
   text-decoration: none;
   color: white;
