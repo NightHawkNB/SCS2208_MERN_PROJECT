@@ -5,7 +5,6 @@ const requireAuth = require('../middleware/requireAuth')
 // Controllers
 const {
     getAllBorrows,
-    getBorrows,
     createBorrow,
     deleteBorrow,
     returnBorrow,
@@ -14,8 +13,6 @@ const {
 router.use(requireAuth)
 
 router.get('/', getAllBorrows)
-
-router.get('/:_id', getBorrows);
 
 router.post('/', createBorrow)
 

@@ -16,24 +16,14 @@ const ListBorrow = () => {
     useEffect(()=>{
         setError(null)
         setBorrows([])
-        var response = '';
-        const fetchBorrows=async ()=>{
-            if(user.userType === 'normal') {
-                response = await fetch('/api/borrow/' + user._id,{
+        const fetchBorrows = async ()=>{
+                const response = await fetch('/api/borrow/',{
                     headers:{
                         'Authorization':`Bearer ${user.token}`
                     }
                 })
-            } else {
-                console.log(user)
-                response = await fetch('/api/borrow/',{
-                    headers:{
-                        'Authorization':`Bearer ${user.token}`
-                    }
-                })
-            }
 
-            const json=await response.json()
+            const json = await response.json()
 
             if(response.ok){
                 console.log(json)

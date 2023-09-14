@@ -8,20 +8,17 @@ const {createFines} = require('./finesController')
 const getAllBorrows = async (req, res) => {
     console.log(req.user)
     const user_type = req.user.userType
+    const user_id = req.user._id
     if(user_type !== 'normal') {
         await Borrow.find({}).sort({createdAt:-1})
             .then(result => res.status(200).json(result))
             .catch(() => res.status(400).json({error: "Fetching borrow details failed"}))
     } else {
-        res.status(400).json({error: "Normal users cannot access all Borrowing Details"})
+        await Borrow.find({user_id}).sort({createdAt:-1})
+            .then(result => res.status(200).json(result))
+            .catch(() => res.status(400).json({error: "Fetching borrow details failed"}))
     }
     
-}
-
-const getBorrows = async (req, res) => {
-    const user_id = req.params._id
-    const borrow = await Borrow.find({user_id}).sort({createdAt:-1})
-    res.status(200).json(borrow)
 }
 
 const createBorrow = async (req, res) => {
@@ -31,6 +28,7 @@ const createBorrow = async (req, res) => {
     const duration = 2;
     
     const user = await User.findOne({email})
+        .catch(() => res.status(400).json({error: "Invalid User Email"}))
     if(!user) res.status(400).json({error: "Invalid User Email"})
 
     const book = await Books.findOne({_id: book_id})
@@ -118,7 +116,6 @@ const returnBorrow = async (req, res) => {
 
 module.exports = {
     getAllBorrows,
-    getBorrows,
     createBorrow,
     deleteBorrow,
     returnBorrow
