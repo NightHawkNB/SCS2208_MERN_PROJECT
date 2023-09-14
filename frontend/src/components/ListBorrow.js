@@ -16,13 +16,22 @@ const ListBorrow = () => {
     useEffect(()=>{
         setError(null)
         setBorrows([])
-        
+        var response = '';
         const fetchBorrows=async ()=>{
-            const response = await fetch('/api/borrow/',{
-                headers:{
-                    'Authorization':`Bearer ${user.token}`
-                }
-            })
+            if(user.userType === 'normal') {
+                response = await fetch('/api/borrow/' + user._id,{
+                    headers:{
+                        'Authorization':`Bearer ${user.token}`
+                    }
+                })
+            } else {
+                console.log(user)
+                response = await fetch('/api/borrow/',{
+                    headers:{
+                        'Authorization':`Bearer ${user.token}`
+                    }
+                })
+            }
 
             const json=await response.json()
 
@@ -36,8 +45,6 @@ const ListBorrow = () => {
         }
         if(user){
             fetchBorrows()
-            
-
         }else{
             setError('You must be logged in!')
         }

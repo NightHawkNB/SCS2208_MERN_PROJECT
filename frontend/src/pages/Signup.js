@@ -12,13 +12,13 @@ const Signup=()=>{
 
     const googleSignUpSuccess=async(e)=>{
         await googleSignup(e)
-        window.location.href = "/available"
+        window.location.href = "/"
     }
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
         await signup(fName,lName,email,password,'normal')//norml user signup
-        if(signup) window.location.href = "/available"
+        if(signup) window.location.href = "/"
     }
     return (
         <div className="form-container">

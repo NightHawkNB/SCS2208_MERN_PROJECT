@@ -5,17 +5,17 @@ const requireAuth = require('../middleware/requireAuth')
 // Controllers
 const {
     getAllBorrows,
-    getBorrow,
+    getBorrows,
     createBorrow,
     deleteBorrow,
     returnBorrow,
 } = require('../controllers/borrowController')
 
-// router.use(requireAuth)
+router.use(requireAuth)
 
 router.get('/', getAllBorrows)
 
-router.get('/:_id', getBorrow)
+router.get('/:_id', getBorrows);
 
 router.post('/', createBorrow)
 

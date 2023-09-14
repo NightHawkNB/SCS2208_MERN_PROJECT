@@ -3,19 +3,23 @@ const Books = require('../models/bookModel')
 const {updateBook} = require('./bookController')
 
 const getAllReserves = async (req, res) => {
-
-    const user_id = req.user._id
-    if(req.user.type=='normal'){
-        await Reserve.find({user_id}).sort({createdAt:-1})
+    
+    const {_id, userType} = req.user
+    // console.log(_id,userType)
+    if(userType === 'normal'){
+        await Reserve.find({user_id:_id}).sort({createdAt:-1})
             .then((result) => {
+                console.log("dedeed")
                 res.status(200).json(result)
             })
             .catch(err => {
                 res.status(404).json({error: err.message})
             })
-    }else{
+    }else if (userType !== 'normal'){
         await Reserve.find().sort({createdAt:-1})
         .then((result) => {
+            // console.log("dedswswweed")
+
             res.status(200).json(result)
         })
         .catch(err => {

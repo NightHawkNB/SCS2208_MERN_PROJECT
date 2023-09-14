@@ -6,19 +6,22 @@ const Fines = require('../models/finesModel')
 const {createFines} = require('./finesController')
 
 const getAllBorrows = async (req, res) => {
-    const borrow = await Borrow.find({}).sort({createdAt:-1})
-    res.status(200).json(borrow)
+    console.log(req.user)
+    const user_type = req.user.userType
+    if(user_type !== 'normal') {
+        await Borrow.find({}).sort({createdAt:-1})
+            .then(result => res.status(200).json(result))
+            .catch(() => res.status(400).json({error: "Fetching borrow details failed"}))
+    } else {
+        res.status(400).json({error: "Normal users cannot access all Borrowing Details"})
+    }
+    
 }
 
-const getBorrow = async (req, res) => {
-    const _id = req.params
-    await Borrow.findOne({_id})
-        .then((result) => {
-            res.status(200).json(result)
-        })
-        .catch(err => {
-            res.status(404).json({error: err.message})
-        })
+const getBorrows = async (req, res) => {
+    const user_id = req.params._id
+    const borrow = await Borrow.find({user_id}).sort({createdAt:-1})
+    res.status(200).json(borrow)
 }
 
 const createBorrow = async (req, res) => {
@@ -115,7 +118,7 @@ const returnBorrow = async (req, res) => {
 
 module.exports = {
     getAllBorrows,
-    getBorrow,
+    getBorrows,
     createBorrow,
     deleteBorrow,
     returnBorrow
