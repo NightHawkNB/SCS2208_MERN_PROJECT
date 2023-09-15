@@ -5,7 +5,7 @@ P.A.K.Chathura Lakshan </br>
 G.N.Bathiya Galagedara</br>
 D.N.Sajith Bandara </br>
 R.D. Jayasinghe </br>
-T.A.D.T. Siriwardhan </br>
+T.A.D.T. Siriwardhana </br>
 
 ## Steps </br>
 clone the repo </br>
