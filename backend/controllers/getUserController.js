@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 //get user details
 const getUserDetails=async (req,res)=>{
     const {id}=req.params
+    // console.log("uuu",id)
     if(!mongoose.Types.ObjectId.isValid(id)){
         //when given id in the req url parameter is not valid
         return res.status(404).json({error:'No such user is listed'})
@@ -11,6 +12,7 @@ const getUserDetails=async (req,res)=>{
     try{
         const user=await User.findById(id)
         
+
         if(!user){//no book found
             return res.status(404).json({error:'No such user is listed'})
         }
@@ -24,7 +26,7 @@ const getUserDetails=async (req,res)=>{
 const getAllUsers=async (req,res)=>{
     
     try{
-
+        console.log(req.user.userType)
         const result= (req.user.userType==='admin')?await User.find({}):await User.find({userType: { $ne: 'admin' }})
         if(!result){
             return res.status(404).json({error:'No users found!'})

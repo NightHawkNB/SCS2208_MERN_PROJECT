@@ -13,7 +13,7 @@ const ReservationsDetails=({reservation})=>{
         var result = window.confirm(`Are you sure, you want to delete the reservation of the book "${reservation.title}"?`)
         if(result){
             console.log("confirmed")
-            const response = await fetch('/api/reserve/'+reservation.book_id,{
+            const response = await fetch('/api/reserve/'+reservation._id,{
                 method:'DELETE',
                 headers:{
                     'Authorization':`Bearer ${user.token}`
