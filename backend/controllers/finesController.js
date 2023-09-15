@@ -26,25 +26,13 @@ const getFine = async(req,res)=>{
 
 //POST new fines
 const createFines = async(req,res) => {
-    const {user_id, borrow_id, amount} = req.body
-
-    const user = await User.findOne({_id: user_id})
-    if(!suer) res.status(400).json({error: "No such user registered"})
-
-    user_name = user.fName + " " + user.lName
-
-    //checking for empty fields
-    let emptyValues = []
-    if(!user_id) emptyValues.push(user_id)
-    if(!borrow_id) emptyValues.push(borrow_id)
-    if(!amount) emptyValues.push(amount)
-    if(emptyValues.length > 0) res.status(400).json({error:'Please fill in all the field', emptyValues})
-
+    const {user_id, user_name,borrow_id, amount} = req.body
+    console.log("edeede",user_id, user_name,borrow_id, amount);    
     try{
         const fines = await Fines.create({user_id, user_name, borrow_id, amount})
-        res.status(201).json(fines)
+        res.status(200).json(fines)
     }catch(err){
-        res.status.json(404)({error:err.massage})
+        res.status(400).json({error:"Fines creation failed!"})
     }
 }
 

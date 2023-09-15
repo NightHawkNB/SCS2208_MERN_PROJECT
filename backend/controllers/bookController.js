@@ -76,6 +76,7 @@ const updateBook=async (req,res)=>{
         //when there are reserved or borrowd books more than new total copies
         return res.status(404).json({error:'New total number of copies cannot accomadate current reservations and borrowed quantity.'})
     }
+    if(req.body.totalCopies)req.body.nAvailable=CurrentBook.nAvailable+(req.body.totalCopies-CurrentBook.totalCopies);
     const book=await Books.findByIdAndUpdate({_id:id},{...req.body})
     if(!book){
         return res.status(404).json({error:'No such book is listed'})

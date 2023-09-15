@@ -103,11 +103,12 @@ const returnBorrow = async (req, res) => {
                 .then(async () => {
                     if(date_diff >= allowed_duration) {
                         const amount = date_diff * 10
-                        const user_name = borrow.name
-                        await Fines.create({user_id, user_name, borrow_id, amount})
-                            .catch(() => res.status(400).json({error: "Fine creation failed"}))
-                    }
-                    res.status(200).json(result)
+                    
+                        req.body.amount=amount;
+                        req.body.user_name=borrow.name
+                        // await Fines.create({user_id, user_name, borrow_id, amount})
+                        await createFines(req,res)
+                    }else res.status(200).json(result)
                 })
                 .catch(err => res.status(400).json({error: "Updating the book failed"}))
         })

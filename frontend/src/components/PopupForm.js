@@ -21,7 +21,7 @@ const PopupForm = ({book})=>{
         var newDetails={}
         if(title!=='')newDetails={title:toTitleCase(title)}
         if(author!=='')newDetails={...newDetails,author:toTitleCase(author)}
-        if(totalCopies!=='')newDetails={...newDetails,totalCopies:totalCopies,nAvailable:totalCopies}
+        if(totalCopies!=='')newDetails={...newDetails,totalCopies:totalCopies}
         
         const response=await fetch('api/bookcrud/'+book._id,{
             method:'PATCH',
