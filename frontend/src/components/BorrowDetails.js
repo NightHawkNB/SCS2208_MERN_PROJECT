@@ -58,8 +58,9 @@ const BorrowDetails = ({borrow}) => {
                 {error && <div className="error">{error}</div>}
             </div>
             <div className="book-detail-button">
+                {user && user.userType!=='normal' && !borrow.isReturned && <span className="material-symbols-outlined" onClick={handleRetun}>keyboard_return </span>}
                 {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleDelete}>Delete</span>}
-                {user && user.userType!=='normal' && <span className="material-symbols-outlined" onClick={handleRetun}>keyboard_return </span>}
+
              </div>
         </div>
          

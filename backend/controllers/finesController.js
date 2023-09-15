@@ -47,12 +47,13 @@ const deleteFines = async(req,res)=>{
 }
 
 const updateFine = async (req, res) => {
-    const fine_id = req.params.id
+    const {id} = req.params
+    console.log("frfr",req.params)
 
     const amount = req.body.amount
     if(!amount) res.status(400).json({error: "Require a valid Amount to update the fine"})
-    
-    await Fines.findOneAndUpdate({_id: fine_id}, {amount})
+    console.log("frfr",id,amount)
+    await Fines.findOneAndUpdate({_id: id}, {amount})
         .then(result => res.status(200).json(result))
         .catch(() => res.status(400).json({error: "Failed to update the fine"}))
 }

@@ -19,7 +19,7 @@ const PopupForm4 = ({fine})=>{
         
         const fine_id = fine._id
         const data = {amount: amount}
-
+        console.log("fff",fine_id)
         const response = await fetch('/api/fines/' + fine_id, {
             method:'PATCH',
             headers:{
